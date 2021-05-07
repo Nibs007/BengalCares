@@ -10,7 +10,6 @@ importlib_metadata==3.7.0
 cryptography==2.6.1
 dash_core_components==1.10.2
 pandas==1.1.5
-Cython==0.29.14
 Brotli==1.0.7
 dash_bootstrap_components==0.12.2
 docutils==0.17.1
