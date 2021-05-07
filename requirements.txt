@@ -20,3 +20,4 @@ ordereddict==1.1
 protobuf==3.16.0
 pyOpenSSL==20.0.1
 wincertstore==0.2
+gunicorn==19.7.1
