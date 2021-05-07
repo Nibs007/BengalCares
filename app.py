@@ -130,4 +130,5 @@ def update_figure1(year):
                
 
 if __name__ == "__main__":
-    app.server.run(debug=True, threaded=True)
+   
+    app.run(debug=True)
