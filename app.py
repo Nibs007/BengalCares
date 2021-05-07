@@ -491,5 +491,5 @@ def update_figure1(year):
 
             return fig
 
-if __name__ == "__main__":
-    app.run_server()
+if __name__ == '__main__':
+    app.server.run(debug=True, threaded=True)
