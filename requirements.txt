@@ -6,7 +6,6 @@ dash_table==4.9.0
 dash_html_components==1.0.3
 keyring==18.0.0
 lxml==4.3.2
-pywin32==300
 importlib_metadata==3.7.0
 cryptography==2.6.1
 dash_core_components==1.10.2
