@@ -1,6 +1,7 @@
 typing_extensions==3.7.4.3
 plotly==4.9.0
 zipp==3.4.0
+pywin32==300
 dash==1.14.0
 dash_table==4.9.0
 dash_html_components==1.0.3
