@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri May  7 17:23:16 2021
-
-@author: nibed
-"""
-
 import pandas as pd
 from dash.dependencies import Input, Output
 import plotly.express as px
@@ -41,16 +34,18 @@ ll= list(set(ll))
 
 body = html.Div([
     dbc.Row([
-               dbc.Col(html.Div(dbc.Alert("This is a repository collected from various sources. Contacts have to be verified by user.", color="dark"))),
+               dbc.Col(html.Div(dbc.Alert("This is a repository collected from various sources. Contacts have to be verified by user. For contributing to the project or any queries, please mail - nibeditad07@gmail.com", color="info",style={'height': '130px', 'width': '30','font-size':25}))),
                
-                dbc.Col(dcc.Dropdown(id='x2',
-            options=[{'label': i, 'value': i} for i in ll], style={'height': '60px'},
+                dbc.Col(html.Div(dbc.Card([dbc.CardHeader("Choose Area",style={
+                    'color':'black','font-weight': 'bold', 'font-size':20
+                }),dbc.CardBody(dcc.Dropdown(id='x2',style={'height': '45px', 'width': '300px','display': 'inline-block','font-size':20},
+            options=[{'label': i, 'value': i} for i in ll],
             multi=False,
-            placeholder="Select an area"))
+            value= ll[0]))],color='warning',style={'height':'13vh','width':1000,'margin-left':30})))
               ],className="mt-2"),
         dbc.Row([
             dbc.Col([dbc.Row(html.Div([
-    html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), style={'height': '200px',"margin-left": "20px","margin-right":'10-px'})
+    html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), style={'height': '300px', 'width': '700px',"margin-left": "20px","margin-right":'10-px'})
 ])), dbc.Row(html.Div(id="grp1"))])], className="mt-2")])
 
     
@@ -66,14 +61,6 @@ import base64
 
 tab2 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-import urllib.request
-img = urllib.request.urlretrieve("https://raw.githubusercontent.com/mllover5901/dat/main/gender-equality.jpg", "gender.jpg")
-
-
-encoded_image = base64.b64encode(open(img[0], 'rb').read())
-
-
-
 
 
 
@@ -83,7 +70,7 @@ app.config['suppress_callback_exceptions'] = True
 server = app.server
 
 app.layout = html.Div([
-    html.H1('OxyCare'),
+    html.H1('OxyCares'),
     dcc.Tabs(id="tabs-example", value='tab-1-example', children=[
         dcc.Tab(label='Oxygen Near You', value='tab-1-example',style={'color':'white'}),
         dcc.Tab(label='Coming Soon', value='tab-2-example',style={'color':'white'}),
@@ -128,6 +115,7 @@ def update_figure1(year):
        
                 })
                
+
 
 if __name__ == '__main__':
     app.server.run(debug=True, threaded=True)
