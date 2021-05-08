@@ -37,7 +37,7 @@ body = html.Div([
                dbc.Col(html.Div(dbc.Alert("This is a repository collected from various sources. Contacts have to be verified by user.", color="dark"))),
                
                 dbc.Col(dcc.Dropdown(id='x2',
-            options=[{'label': i, 'value': i} for i in ll], style={'height': '60px'},
+            options=[{'label': i, 'value': i} for i in ll], style={'height': '60px','font-size':15},
             multi=False,
             placeholder="Select an area"))
               ],className="mt-2"),
