@@ -31,20 +31,28 @@ tab1 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 ll = dm['Area'].values.tolist()
 ll= list(set(ll))
+dd = dm['District'].values.tolist()
+dd= list(set(dd))
 
 body = html.Div([
     dbc.Row([
                dbc.Col(html.Div(dbc.Alert("This is a repository collected from various sources. Contacts have to be verified by user.", color="dark"))),
                
-                dbc.Col(dcc.Dropdown(id='x2',
-            options=[{'label': i, 'value': i} for i in ll], style={'height': '60px','font-size':25},
+                dbc.Col(dcc.Dropdown(id='dist',
+            options=[{'label': i, 'value': i} for i in dd], style={'height': '60px','font-size':25,'font-family':"Arial"},
             multi=False,
-            placeholder="Select an area"))
+            placeholder="Select a District"))
               ],className="mt-2"),
         dbc.Row([
-            dbc.Col([dbc.Row(html.Div([
-    html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), style={'height': '200px',"margin-left": "20px","margin-right":'10-px'})
-])), dbc.Row(html.Div(id="grp1"))])], className="mt-2")])
+            dbc.Col([dbc.Row([dbc.Col(html.Div([
+    html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), 
+             style={'height': '200px',"margin-left": "20px","margin-right":'10-px'})])), 
+            dbc.Col(dcc.Dropdown(id='x2',
+            options=[{'label': i, 'value': i} for i in ll], style={'height': '60px','font-size':25},
+            multi=False,
+            placeholder="Select a Locality"))]), 
+                     
+                     dbc.Row(html.Div(id="grp1"))], className="mt-2")])])
 
     
 tab1.layout = html.Div([body])
@@ -64,12 +72,6 @@ img = urllib.request.urlretrieve("https://raw.githubusercontent.com/mllover5901/
 
 
 encoded_image = base64.b64encode(open(img[0], 'rb').read())
-
-
-
-
-
-
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.config['suppress_callback_exceptions'] = True
@@ -95,18 +97,46 @@ def render_content(tab):
     elif tab == 'tab-2-example':
         return tab2.layout
 
+
+p = dm.groupby('District')['Area'].unique()
+district = pd.DataFrame(p)
+district.reset_index(inplace=True)
+
+dik={}
+k1 = dict(district.values)
+for k,v in k1.items():
+    m=[]
+    for it in v:
+        m.append(it)
+    dik[k]=m
+
+
+    
+
+@app.callback(
+    Output('x2', 'options'),
+    [Input('dist', 'value')]
+)
+def update_date_dropdown(name):
+    return [{'label': i, 'value': i} for i in dik[name]]    
+    
+    
 @app.callback(Output('grp1', 'children'),
-                                  [Input('x2', 'value')])
-def update_figure1(year):
+                                  [Input('x2', 'value'),Input('dist', 'value')])
+def update_figure1(area,dist):
             global dff 
-            if year==None:
+            if area==None and dist==None:
 
                 dff=dm
-            else: 
-                dff = dm[dm['Area']==year]
+            elif area==None and dist!=None: 
+                dff = dm[dm['District']==dist]
+            elif area!=None and dist==None: 
+                dff = dm[dm['Area']==area]
+            elif area!=None and dist!=None:
+                dff = dm[(dm['Area']==area)&(dm['District']==dist)]
                
        
-            df1 = dff[['Area','State','Contact Number']]
+            df1 = dff[['Area','District','State','Contact Number']]
          
             data = df1.to_dict('rows')
             columns =  [{"name": i, "id": i,} for i in (df1.columns)]
@@ -120,6 +150,7 @@ def update_figure1(year):
                     'textOverflow': 'ellipsis','textAlign': 'center','whiteSpace': 'normal'
        
                 })
+               
                
 
 if __name__ == '__main__':
