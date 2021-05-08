@@ -32,16 +32,19 @@ tab1 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 ll = dm['Area'].values.tolist()
 ll= list(set(ll))
 
+
+
 body = html.Div([
     dbc.Row([
-               dbc.Col(html.Div(dbc.Alert("This is a repository collected from various sources. Contacts have to be verified by user. For contributing to the project or any queries, please mail - nibeditad07@gmail.com", color="info",style={'height': '130px', 'width': '30','font-size':25}))),
+               dbc.Col(html.Div(dbc.Alert("This is a repository collected from various sources. Contacts have to be verified by user. For contributing to the project or any queries, please mail - nibeditad07@gmail.com", 
+                                          color="info",style={'height': '100px', 'width': '30','font-size':18}))),
                
                 dbc.Col(html.Div(dbc.Card([dbc.CardHeader("Choose Area",style={
-                    'color':'black','font-weight': 'bold', 'font-size':20
-                }),dbc.CardBody(dcc.Dropdown(id='x2',style={'height': '45px', 'width': '300px','display': 'inline-block','font-size':20},
+                    'color':'black','font-weight': 'bold', 'font-size':18,'margin-bottom':'0.01'
+                }),dbc.CardBody(dcc.Dropdown(id='x2',style={'height': '30px', 'width': '300px','margin-bottom':'0.01','display': 'inline-block','font-size':20},
             options=[{'label': i, 'value': i} for i in ll],
             multi=False,
-            value= ll[0]))],color='warning',style={'height':'13vh','width':1000,'margin-left':30})))
+            value= ll[0]))],color='warning',style={'height':'11vh','width':1000,'margin-left':30})))
               ],className="mt-2"),
         dbc.Row([
             dbc.Col([dbc.Row(html.Div([
@@ -115,7 +118,6 @@ def update_figure1(year):
        
                 })
                
-
 
 if __name__ == '__main__':
     app.server.run(debug=True, threaded=True)
