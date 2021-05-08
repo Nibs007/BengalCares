@@ -115,7 +115,7 @@ def update_figure1(year):
                 style_cell={'backgroundColor': 'white',
                     'color': 'black','font_size':18,'height':100,'fontWeight': 'bold',
                     # all three widths are needed
-                    'minWidth': '200px', 'width': '200px', 'maxWidth': '200px',
+                    'minWidth': '300px', 'width': '300px', 'maxWidth': '300px',
                     'overflow': 'hidden','border': '1px solid grey',"margin-left": "40px","margin-left": "40px",
                     'textOverflow': 'ellipsis','textAlign': 'center','whiteSpace': 'normal'
        
