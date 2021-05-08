@@ -32,23 +32,18 @@ tab1 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 ll = dm['Area'].values.tolist()
 ll= list(set(ll))
 
-
-
 body = html.Div([
     dbc.Row([
-               dbc.Col(html.Div(dbc.Alert("This is a repository collected from various sources. Contacts have to be verified by user. For contributing to the project or any queries, please mail - nibeditad07@gmail.com", 
-                                          color="info",style={'height': '100px', 'width': '30','font-size':18}))),
+               dbc.Col(html.Div(dbc.Alert("This is a repository collected from various sources. Contacts have to be verified by user.", color="dark"))),
                
-                dbc.Col(html.Div(dbc.Card([dbc.CardHeader("Choose Area",style={
-                    'color':'black','font-weight': 'bold', 'font-size':18,'margin-bottom':'0.01'
-                }),dbc.CardBody(dcc.Dropdown(id='x2',style={'height': '30px', 'width': '300px','margin-bottom':'0.01','display': 'inline-block','font-size':20},
-            options=[{'label': i, 'value': i} for i in ll],
+                dbc.Col(dcc.Dropdown(id='x2',
+            options=[{'label': i, 'value': i} for i in ll], style={'height': '60px'},
             multi=False,
-            value= ll[0]))],color='warning',style={'height':'11vh','width':1000,'margin-left':30})))
+            placeholder="Select an area"))
               ],className="mt-2"),
         dbc.Row([
             dbc.Col([dbc.Row(html.Div([
-    html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), style={'height': '300px', 'width': '700px',"margin-left": "20px","margin-right":'10-px'})
+    html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), style={'height': '200px',"margin-left": "20px","margin-right":'10-px'})
 ])), dbc.Row(html.Div(id="grp1"))])], className="mt-2")])
 
     
@@ -64,6 +59,14 @@ import base64
 
 tab2 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+import urllib.request
+img = urllib.request.urlretrieve("https://raw.githubusercontent.com/mllover5901/dat/main/gender-equality.jpg", "gender.jpg")
+
+
+encoded_image = base64.b64encode(open(img[0], 'rb').read())
+
+
+
 
 
 
@@ -73,7 +76,7 @@ app.config['suppress_callback_exceptions'] = True
 server = app.server
 
 app.layout = html.Div([
-    html.H1('OxyCares'),
+    html.H1('OxyCare'),
     dcc.Tabs(id="tabs-example", value='tab-1-example', children=[
         dcc.Tab(label='Oxygen Near You', value='tab-1-example',style={'color':'white'}),
         dcc.Tab(label='Coming Soon', value='tab-2-example',style={'color':'white'}),
