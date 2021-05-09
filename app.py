@@ -39,7 +39,7 @@ dd= list(set(dd))
 
 body = html.Div([
     dbc.Row([
-               dbc.Col(html.Div(dbc.Alert("Information comea from a repository built using various sources. Contacts have to be verified by user.", color="info"))),
+               dbc.Col(html.Div(dbc.Alert("All information comes from a repository built using various sources. Contacts have to be verified by user.", color="info"))),
                
                 dbc.Col(dcc.Dropdown(id='dist',
             options=[{'label': i, 'value': i} for i in dd], style={'height': '60px','font-size':25,'font-family':"Arial"},
