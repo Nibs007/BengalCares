@@ -23,11 +23,14 @@ import base64
 
 
 import urllib.request
-img = urllib.request.urlretrieve("https://www.homecaremag.com/sites/default/files/O2-oxygen-507182002-_0.jpg", "gender.jpg")
+img = urllib.request.urlretrieve("https://cdn.dribbble.com/users/338126/screenshots/10073371/media/7903e2af9ad301fadfc04d20dfaebdd9.gif", "gender.jpg")
 
 
 encoded_image = base64.b64encode(open(img[0], 'rb').read())
 tab1 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+img2 = urllib.request.urlretrieve("https://www.washingtonpost.com/resizer/W9GTmvsEYsQlF_6GKOyfRFVZmeo=/1450x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/VFRGMEAFMVFLVM4R77J6ANQEQQ.png", "mask.jpg")
+encoded_image2 = base64.b64encode(open(img2[0], 'rb').read())
 
 ll = dm['Area'].values.tolist()
 ll= list(set(ll))
@@ -46,13 +49,15 @@ body = html.Div([
         dbc.Row([
             dbc.Col([dbc.Row([dbc.Col(html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), 
-             style={'height': '200px',"margin-left": "20px","margin-right":'10-px'})])), 
+             style={'height': '300px','width': '500px',"margin-left": "20px","margin-right":'10-px'})])), 
             dbc.Col(dcc.Dropdown(id='x2',
             options=[{'label': i, 'value': i} for i in ll], style={'height': '60px','font-size':25},
             multi=False,
             placeholder="Select a Locality"))]), 
                      
-                     dbc.Row(html.Div(id="grp1"))], className="mt-2")])])
+                     dbc.Row([dbc.Col(html.Div(id="grp1")), dbc.Col(html.Div([
+    html.Img(src='data:image/jpg;base64,{}'.format(encoded_image2.decode()), 
+             style={'height': '300px','height': '500px',"margin-left": "20px","margin-right":'10-px'})]))])], className="mt-2")])])
 
     
 tab1.layout = html.Div([body])
@@ -80,8 +85,8 @@ server = app.server
 app.layout = html.Div([
     html.H1('OxyCare'),
     dcc.Tabs(id="tabs-example", value='tab-1-example', children=[
-        dcc.Tab(label='Oxygen Near You', value='tab-1-example',style={'color':'white'}),
-        dcc.Tab(label='Coming Soon', value='tab-2-example',style={'color':'white'}),
+        dcc.Tab(label='Oxygen Near You', value='tab-1-example',style={'color':'white','font-size':25}),
+        dcc.Tab(label='Coming Soon', value='tab-2-example',style={'color':'white','font-size':25}),
     ],colors={
             "border": "white",
             "primary": "black",
@@ -151,7 +156,7 @@ def update_figure1(area,dist):
        
                 })
                
-               
+
 
 if __name__ == '__main__':
     app.server.run(debug=True, threaded=True)
