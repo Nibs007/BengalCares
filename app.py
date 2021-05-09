@@ -29,7 +29,7 @@ img = urllib.request.urlretrieve("https://cdn.dribbble.com/users/338126/screensh
 encoded_image = base64.b64encode(open(img[0], 'rb').read())
 tab1 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-img2 = urllib.request.urlretrieve("https://img.freepik.com/free-photo/equipment-medical-oxygen-tank-cylinder-regulator-gauge_101276-199.jpg?size=626&ext=jpg", "mask.jpg")
+img2 = urllib.request.urlretrieve("https://thumbs.dreamstime.com/b/portable-oxygen-tank-green-pressurized-cart-ready-to-use-patient-106923200.jpg", "mask.jpg")
 encoded_image2 = base64.b64encode(open(img2[0], 'rb').read())
 
 ll = dm['Area'].values.tolist()
@@ -39,7 +39,7 @@ dd= list(set(dd))
 
 body = html.Div([
     dbc.Row([
-               dbc.Col(html.Div(dbc.Alert("All information comes from a repository built using various sources. Contacts have to be verified by user.", color="info"))),
+               dbc.Col(html.Div(dbc.Alert("All information comes from a repository built using various sources. This website is updated every 12 hours. Contacts have to be verified by user.", color="info"))),
                
                 dbc.Col(dcc.Dropdown(id='dist',
             options=[{'label': i, 'value': i} for i in dd], style={'height': '60px','font-size':25,'font-family':"Arial"},
@@ -157,8 +157,6 @@ def update_figure1(area,dist):
                 })
                
                
-               
-
 
 if __name__ == '__main__':
     app.server.run(debug=True, threaded=True)
