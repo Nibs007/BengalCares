@@ -108,7 +108,7 @@ for k,v in k1.items():
     m=[]
     for it in v:
         m.append(it)
-    dik[k]=m
+    dik[k]=list(set(m))
 
 
     
