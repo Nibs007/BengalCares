@@ -49,7 +49,7 @@ body = html.Div([
         dbc.Row([
             dbc.Col([dbc.Row([dbc.Col(html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), 
-             style={'height': '300px','width': '500px',"margin-left": "20px","margin-right":'10-px'})])), 
+             style={'height': '300px','width': '500px',"margin-left": "10px","margin-right":'5-px'})])), 
             dbc.Col(dcc.Dropdown(id='x2',
             options=[{'label': i, 'value': i} for i in ll], style={'height': '60px','font-size':25},
             multi=False,
@@ -156,6 +156,9 @@ def update_figure1(area,dist):
        
                 })
                
+               
+               
+
                
 
 if __name__ == '__main__':
