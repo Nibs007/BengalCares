@@ -141,7 +141,7 @@ def update_figure1(area,dist):
                 dff = dm[(dm['Area']==area)&(dm['District']==dist)]
                
        
-            df1 = dff[['Area','District','State','Contact Number']]
+            df1 = dff[['Area','District','Contact Number']]
          
             data = df1.to_dict('rows')
             columns =  [{"name": i, "id": i,} for i in (df1.columns)]
