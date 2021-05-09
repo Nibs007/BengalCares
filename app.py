@@ -29,7 +29,7 @@ img = urllib.request.urlretrieve("https://cdn.dribbble.com/users/338126/screensh
 encoded_image = base64.b64encode(open(img[0], 'rb').read())
 tab1 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-img2 = urllib.request.urlretrieve("https://www.washingtonpost.com/resizer/W9GTmvsEYsQlF_6GKOyfRFVZmeo=/1450x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/VFRGMEAFMVFLVM4R77J6ANQEQQ.png", "mask.jpg")
+img2 = urllib.request.urlretrieve("https://img.freepik.com/free-photo/equipment-medical-oxygen-tank-cylinder-regulator-gauge_101276-199.jpg?size=626&ext=jpg", "mask.jpg")
 encoded_image2 = base64.b64encode(open(img2[0], 'rb').read())
 
 ll = dm['Area'].values.tolist()
@@ -39,7 +39,7 @@ dd= list(set(dd))
 
 body = html.Div([
     dbc.Row([
-               dbc.Col(html.Div(dbc.Alert("This is a repository collected from various sources. Contacts have to be verified by user.", color="dark"))),
+               dbc.Col(html.Div(dbc.Alert("Information comea from a repository built using various sources. Contacts have to be verified by user.", color="info"))),
                
                 dbc.Col(dcc.Dropdown(id='dist',
             options=[{'label': i, 'value': i} for i in dd], style={'height': '60px','font-size':25,'font-family':"Arial"},
@@ -83,7 +83,7 @@ app.config['suppress_callback_exceptions'] = True
 server = app.server
 
 app.layout = html.Div([
-    html.H1('OxyCare'),
+    html.H1('OxyCares'),
     dcc.Tabs(id="tabs-example", value='tab-1-example', children=[
         dcc.Tab(label='Oxygen Near You', value='tab-1-example',style={'color':'white','font-size':25}),
         dcc.Tab(label='Coming Soon', value='tab-2-example',style={'color':'white','font-size':25}),
@@ -155,6 +155,8 @@ def update_figure1(area,dist):
                     'textOverflow': 'ellipsis','textAlign': 'center','whiteSpace': 'normal'
        
                 })
+               
+               
                
 
 
