@@ -85,7 +85,7 @@ body2 = html.Div([
         dbc.Row([
             dbc.Col([dbc.Row([dbc.Col(html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image3.decode()), 
-             style={'height': '350px','width': '550px',"margin-left": "2px","margin-right":'5-px'})]))]), 
+             style={'height': '350px','width': '450px',"margin-left": "2px","margin-right":'5-px'})]))]), 
                      
                      dbc.Row([dbc.Col(html.Div(id="tab2")), dbc.Col(html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image4.decode()), 
