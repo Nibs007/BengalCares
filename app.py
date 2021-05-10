@@ -49,7 +49,7 @@ body = html.Div([
         dbc.Row([
             dbc.Col([dbc.Row([dbc.Col(html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), 
-             style={'height': '400px','width':'600px',"margin-left": "2px","margin-right":'5-px'})])), 
+             style={'height': '400px','width':'400px',"margin-left": "2px","margin-right":'5-px'})])), 
             dbc.Col(dcc.Dropdown(id='x2',
             options=[{'label': i, 'value': i} for i in ll], style={'height': '60px','font-size':25},
             multi=False,
@@ -84,7 +84,7 @@ body2 = html.Div([
         dbc.Row([
             dbc.Col([dbc.Row([dbc.Col(html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image3.decode()), 
-             style={'height': '300px','width': '300px',"margin-left": "2px","margin-right":'5-px'})]))]), 
+             style={'height': '350px','width': '550px',"margin-left": "2px","margin-right":'5-px'})]))]), 
                      
                      dbc.Row([dbc.Col(html.Div(id="tab2")), dbc.Col(html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image4.decode()), 
