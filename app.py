@@ -62,7 +62,7 @@ body = html.Div([
     
 tab1.layout = html.Div([body])
 
-meal = pd.read_csv(r"C:\Users\nibed\Desktop\Covid\Meal Delivery\Meals_Refined.csv")
+meal = pd.read_csv("https://raw.githubusercontent.com/Nibs007/OxyCare/main/Meals_Refined.csv")
 ard = meal['Area'].values.tolist()
 tab2 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
