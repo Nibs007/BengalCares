@@ -64,6 +64,7 @@ tab1.layout = html.Div([body])
 
 meal = pd.read_csv("https://raw.githubusercontent.com/Nibs007/OxyCare/main/Meals_Refined.csv")
 ard = meal['Area'].values.tolist()
+ard = list(set(ard))
 tab2 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 img3 = urllib.request.urlretrieve("https://scontent.fdel6-1.fna.fbcdn.net/v/t1.6435-9/184226439_10159312065084679_3015433159858468173_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=b9115d&_nc_ohc=CPq0tPLaxDUAX-Y_vwg&_nc_ht=scontent.fdel6-1.fna&oh=aae98928061c3af89225864e1d53d4b6&oe=60BF6C0F", "food.jpg")
