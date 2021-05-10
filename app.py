@@ -23,7 +23,7 @@ import base64
 
 
 import urllib.request
-img = urllib.request.urlretrieve("https://cdn.dribbble.com/users/338126/screenshots/10073371/media/7903e2af9ad301fadfc04d20dfaebdd9.gif", "gender.jpg")
+img = urllib.request.urlretrieve("https://image.freepik.com/free-vector/family-wearing-face-masks_52683-38547.jpg", "gender.jpg")
 
 
 encoded_image = base64.b64encode(open(img[0], 'rb').read())
@@ -49,7 +49,7 @@ body = html.Div([
         dbc.Row([
             dbc.Col([dbc.Row([dbc.Col(html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), 
-             style={'height': '300px','width': '450px',"margin-left": "2px","margin-right":'5-px'})])), 
+             style={'height': '400px','width':'600px',"margin-left": "2px","margin-right":'5-px'})])), 
             dbc.Col(dcc.Dropdown(id='x2',
             options=[{'label': i, 'value': i} for i in ll], style={'height': '60px','font-size':25},
             multi=False,
@@ -62,6 +62,39 @@ body = html.Div([
     
 tab1.layout = html.Div([body])
 
+meal = pd.read_csv(r"C:\Users\nibed\Desktop\Covid\Meal Delivery\Meals_Refined.csv")
+ard = meal['Area'].values.tolist()
+tab2 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+img3 = urllib.request.urlretrieve("https://scontent.fdel6-1.fna.fbcdn.net/v/t1.6435-9/184226439_10159312065084679_3015433159858468173_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=b9115d&_nc_ohc=CPq0tPLaxDUAX-Y_vwg&_nc_ht=scontent.fdel6-1.fna&oh=aae98928061c3af89225864e1d53d4b6&oe=60BF6C0F", "food.jpg")
+encoded_image3 = base64.b64encode(open(img3[0], 'rb').read())
+
+img4 = urllib.request.urlretrieve("https://i.pinimg.com/736x/aa/32/f6/aa32f68771f47e6fdde9fe2510bca952.jpg","food1.jpg")
+encoded_image4 = base64.b64encode(open(img4[0], 'rb').read())
+
+body2 = html.Div([
+    dbc.Row([
+               dbc.Col(html.Div(dbc.Alert("All information comes from a repository built using various sources. This website is updated every 12 hours. Contacts have to be verified by user.", color="info"))),
+               
+                dbc.Col(dcc.Dropdown(id='ard',
+            options=[{'label': i, 'value': i} for i in ard], style={'height': '60px','font-size':25,'font-family':"Arial"},
+            multi=False,
+            placeholder="Select a Locality"))
+              ],className="mt-2"),
+        dbc.Row([
+            dbc.Col([dbc.Row([dbc.Col(html.Div([
+    html.Img(src='data:image/jpg;base64,{}'.format(encoded_image3.decode()), 
+             style={'height': '350px','width': '550px',"margin-left": "2px","margin-right":'5-px'})]))]), 
+                     
+                     dbc.Row([dbc.Col(html.Div(id="tab2")), dbc.Col(html.Div([
+    html.Img(src='data:image/jpg;base64,{}'.format(encoded_image4.decode()), 
+             style={'height': '300px','height': '500px',"margin-left": "20px","margin-right":'10-px'})]))])], className="mt-2")])])
+
+    
+tab2.layout = html.Div([body2])
+
+
+
 import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
@@ -70,7 +103,6 @@ import plotly.graph_objects as go
 import base64
 
 
-tab2 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 import urllib.request
 img = urllib.request.urlretrieve("https://raw.githubusercontent.com/mllover5901/dat/main/gender-equality.jpg", "gender.jpg")
@@ -86,7 +118,7 @@ app.layout = html.Div([
     html.H1('OxyCares'),
     dcc.Tabs(id="tabs-example", value='tab-1-example', children=[
         dcc.Tab(label='Oxygen Near You', value='tab-1-example',style={'color':'white','font-size':25}),
-        dcc.Tab(label='Coming Soon', value='tab-2-example',style={'color':'white','font-size':25}),
+        dcc.Tab(label='Meal Delivery Near You', value='tab-2-example',style={'color':'white','font-size':25}),
     ],colors={
             "border": "white",
             "primary": "black",
@@ -114,8 +146,6 @@ for k,v in k1.items():
     for it in v:
         m.append(it)
     dik[k]=list(set(m))
-
-
     
 
 @app.callback(
@@ -141,7 +171,7 @@ def update_figure1(area,dist):
                 dff = dm[(dm['Area']==area)&(dm['District']==dist)]
                
        
-            df1 = dff[['Area','District','Contact Number']]
+            df1 = dff[['Area','District','State','Contact Number']]
          
             data = df1.to_dict('rows')
             columns =  [{"name": i, "id": i,} for i in (df1.columns)]
@@ -150,15 +180,43 @@ def update_figure1(area,dist):
                 style_cell={'backgroundColor': 'white',
                     'color': 'black','font_size':18,'height':100,'fontWeight': 'bold',
                     # all three widths are needed
-                    'minWidth': '350px', 'width': '350px', 'maxWidth': '350px',
+                    'minWidth': '300px', 'width': '300px', 'maxWidth': '300px',
                     'overflow': 'hidden','border': '1px solid grey',"margin-left": "40px","margin-left": "40px",
                     'textOverflow': 'ellipsis','textAlign': 'center','whiteSpace': 'normal'
        
                 })
-               
-               
-               
+   
 
+@app.callback(Output('tab2', 'children'),
+                                  [Input('ard', 'value')])
+def update_figure1(area):
+            global dff 
+            if area==None:
+
+                dff=meal
+           
+            elif area!=None:
+                dff = meal[(meal['Area']==area)]
+               
+       
+            df1 = dff[['Area','Name of Supplier/CovidHero','Contact Number']]
+         
+            data = df1.to_dict('rows')
+            columns =  [{"name": i, "id": i,} for i in (df1.columns)]
+            return dt.DataTable(data=data, columns=columns,style_header={ 'whiteSpace': 'normal','height': 'auto','backgroundColor': 'rgb(30, 30, 30)','color':'white','font_size':18},
+                style_table={'overflowX': 'auto'},
+                style_cell={'backgroundColor': 'white',
+                    'color': 'black','font_size':18,'height':100,'fontWeight': 'bold',
+                    # all three widths are needed
+                    'minWidth': '300px', 'width': '300px', 'maxWidth': '300px',
+                    'overflow': 'hidden','border': '1px solid grey',"margin-left": "40px","margin-left": "40px",
+                    'textOverflow': 'ellipsis','textAlign': 'center','whiteSpace': 'normal'
+       
+                })
+                              
+               
+               
+               
                
 
 if __name__ == '__main__':
