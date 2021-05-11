@@ -112,18 +112,36 @@ img = urllib.request.urlretrieve("https://raw.githubusercontent.com/mllover5901/
 encoded_image = base64.b64encode(open(img[0], 'rb').read())
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app.index_string = """<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-90VMKHLP8Q"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-90VMKHLP8Q');
+        </script>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+            {%renderer%}
+        </footer>
+    </body>
+</html>"""
+
+
 app.config['suppress_callback_exceptions'] = True
 server = app.server
-app.scripts.config.serve_locally = False
-app.scripts.append_script({
-    'external_url': 'https://www.googletagmanager.com/gtag/js?id=G-90VMKHLP8Q'
-})
-app.scripts.append_script({
-    'external_url': 'https://cdn.jsdelivr.net/gh/Nibs007/OxyCare/gtag.js'
-})
-
-
-
 
 app.layout = html.Div([
     html.H1('OxyCares'),
