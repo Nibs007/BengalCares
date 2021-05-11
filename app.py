@@ -114,6 +114,16 @@ encoded_image = base64.b64encode(open(img[0], 'rb').read())
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.config['suppress_callback_exceptions'] = True
 server = app.server
+app.scripts.config.serve_locally = False
+app.scripts.append_script({
+    'external_url': 'http://cdn.jsdelivr.net/gh/Nibs007/OxyCare/async_src.js'
+})
+app.scripts.append_script({
+    'external_url': 'http://cdn.jsdelivr.net/gh/Nibs007/OxyCare/gtag.js'
+})
+
+
+
 
 app.layout = html.Div([
     html.H1('OxyCares'),
@@ -126,6 +136,8 @@ app.layout = html.Div([
             "background": "black"}),
     html.Div(id='tabs-content-example')
 ])
+
+
 
 @app.callback(Output('tabs-content-example', 'children'),
               [Input('tabs-example', 'value')])
