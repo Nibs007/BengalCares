@@ -119,7 +119,7 @@ app.scripts.append_script({
     'external_url': 'https://www.googletagmanager.com/gtag/js?id=G-90VMKHLP8Q'
 })
 app.scripts.append_script({
-    'external_url': 'http://cdn.jsdelivr.net/gh/Nibs007/OxyCare/gtag.js'
+    'external_url': 'https://cdn.jsdelivr.net/gh/Nibs007/OxyCare/gtag.js'
 })
 
 
