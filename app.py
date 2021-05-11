@@ -116,7 +116,7 @@ app.config['suppress_callback_exceptions'] = True
 server = app.server
 app.scripts.config.serve_locally = False
 app.scripts.append_script({
-    'external_url': 'http://cdn.jsdelivr.net/gh/Nibs007/OxyCare/async_src.js'
+    'external_url': 'https://www.googletagmanager.com/gtag/js?id=G-90VMKHLP8Q'
 })
 app.scripts.append_script({
     'external_url': 'http://cdn.jsdelivr.net/gh/Nibs007/OxyCare/gtag.js'
