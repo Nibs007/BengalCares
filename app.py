@@ -42,7 +42,7 @@ body = html.Div([
                dbc.Col(html.Div(dbc.Alert("** This app collects publicly available data posted on modern digital channels. Leads shared may not be verified or accurate, or may lead to misleading content.", color="info",style={'height':'90px','font-size':16,'font-style':'italic','fontWeight': 'bold','font-family':"Arial"}))),
                
                 dbc.Col(dcc.Dropdown(id='dist',
-            options=[{'label': i, 'value': i} for i in dd], style={'height': '60px','font-size':25,'font-family':"Arial","margin-bottom":'1-px'},
+            options=[{'label': i, 'value': i} for i in dd], style={'height': '60px','font-size':25,'font-family':"Arial","margin-bottom":'0.1px'},
             multi=False,
             placeholder="Select a District"))
               ],className="mt-2"),
@@ -51,7 +51,7 @@ body = html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), 
              style={'height': '380px','width':'450px',"margin-left": "2px","margin-right":'5-px'})])), 
             dbc.Col(dcc.Dropdown(id='x2',
-            options=[{'label': i, 'value': i} for i in ll], style={'height': '60px','font-size':25,"margin-bottom":'1-px'},
+            options=[{'label': i, 'value': i} for i in ll], style={'height': '60px','font-size':25,"margin-bottom":'0.1px'},
             multi=False,
             placeholder="Select a Locality"))]), 
                      
