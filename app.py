@@ -39,7 +39,7 @@ dd= list(set(dd))
 
 body = html.Div([
     dbc.Row([
-               dbc.Col(html.Div(dbc.Alert("This app has been created to help people during these tough times. It collects publicly available data posted on modern digital channels. Leads shared may not be verified or accurate, or may lead to misleading content.", color="info",style={'height':'90px','font-size':12,'font-style':'italic','fontWeight': 'bold','font-family':"Arial"}))),
+               dbc.Col(html.Div(dbc.Alert("This app has been created to help people during these tough times. It collects publicly available data posted on modern digital channels. Leads shared may not be verified or accurate, or may lead to misleading content.", color="info",style={'height':'90px','font-size':14,'font-style':'italic','fontWeight': 'bold','font-family':"Arial"}))),
                
                 dbc.Col(dcc.Dropdown(id='dist',
             options=[{'label': i, 'value': i} for i in dd], style={'height': '60px','font-size':25,'font-family':"Arial"},
