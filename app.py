@@ -39,7 +39,7 @@ dd= list(set(dd))
 
 body = html.Div([
     dbc.Row([
-               dbc.Col(html.Div(dbc.Alert("All information comes from a repository built using various sources. This website is updated every 12 hours. Contacts have to be verified by user.", color="info"))),
+               dbc.Col(html.Div(dbc.Alert("This app has been created to help people during these tough times. It collects publicly available data posted on modern digital channels. Leads shared may not be verified or accurate, or may lead to misleading content.", color="info",style={'height':'80px','font-size':18,'fontWeight': 'bold','font-family':"Arial"}))),
                
                 dbc.Col(dcc.Dropdown(id='dist',
             options=[{'label': i, 'value': i} for i in dd], style={'height': '60px','font-size':25,'font-family':"Arial"},
@@ -49,7 +49,7 @@ body = html.Div([
         dbc.Row([
             dbc.Col([dbc.Row([dbc.Col(html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), 
-             style={'height': '400px','width':'450px',"margin-left": "2px","margin-right":'5-px'})])), 
+             style={'height': '380px','width':'450px',"margin-left": "2px","margin-right":'5-px'})])), 
             dbc.Col(dcc.Dropdown(id='x2',
             options=[{'label': i, 'value': i} for i in ll], style={'height': '60px','font-size':25},
             multi=False,
@@ -75,7 +75,7 @@ encoded_image4 = base64.b64encode(open(img4[0], 'rb').read())
 
 body2 = html.Div([
     dbc.Row([
-               dbc.Col(html.Div(dbc.Alert("All information comes from a repository built using various sources. This website is updated every 12 hours. Contacts have to be verified by user.", color="info"))),
+               dbc.Col(html.Div(dbc.Alert("All information comes from a repository built using various sources. This website is updated every 12 hours. Contacts have to be verified by user.", color="info",style={'font-size':18,'fontWeight': 'bold'}))),
                
                 dbc.Col(dcc.Dropdown(id='ard',
             options=[{'label': i, 'value': i} for i in ard], style={'height': '60px','font-size':25,'font-family':"Arial"},
@@ -245,8 +245,6 @@ def update_figure1(area):
        
                 })
                               
-               
-               
                
                
 
