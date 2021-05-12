@@ -51,7 +51,7 @@ body = html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image.decode()), 
              style={'height': '380px','width':'450px',"margin-left": "2px","margin-right":'5-px'})])), 
             dbc.Col(dcc.Dropdown(id='x2',
-            options=[{'label': i, 'value': i} for i in ll], style={'height': '60px','font-size':25},
+            options=[{'label': i, 'value': i} for i in ll], style={'height': '60px','font-size':25,"margin-bottom":'1-px'},
             multi=False,
             placeholder="Select a Locality"))]), 
                      
