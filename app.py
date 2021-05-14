@@ -135,7 +135,7 @@ body2 = html.Div([
         dbc.Row([
             dbc.Col([dbc.Row([dbc.Col(html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image7.decode()), 
-             style={'height': '380px','width':'450px',"margin-left": "2px","margin-right":'5-px'})])), 
+             style={'height': '300px','width':'400px',"margin-left": "2px","margin-right":'5-px'})])), 
             dbc.Col(dcc.Dropdown(id='am',
             options=[{'label': i, 'value': i} for i in lamb], style={'height': '60px','font-size':25,"margin-bottom":'0.1px'},
             multi=False,
@@ -344,7 +344,7 @@ def update_figure2(area,dist):
                 dff = amb[(amb['Area']==area)&(amb['District']==dist)]
                
        
-            df1 = dff[['Service Provider','District','Contact Number']]
+            df1 = dff[['Service Provider','Area','Contact Number']]
          
             data = df1.to_dict('rows')
             columns =  [{"name": i, "id": i,} for i in (df1.columns)]
