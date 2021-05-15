@@ -110,8 +110,8 @@ tab2 = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 img7 = urllib.request.urlretrieve("https://i.pinimg.com/originals/72/a8/0b/72a80b08f5d07a2066fa89830e1ae148.png", "ambulance.jpg")
 encoded_image7 = base64.b64encode(open(img7[0], 'rb').read())
 
-img8 = urllib.request.urlretrieve("https://lh3.googleusercontent.com/proxy/h3CxeCSMi22Oiz9bQeFtsYJPgjCPYxJC4ZHhKYsm1e_daD24SdtetN8wE0yag3-zPAQlcyJI_FAepRkJ7UpKds4985eSqZTzgBgCeF97sT7Kz--B4eVDO9--ExEjTJ_KlgXEtHjFuUHYR6_aW1jY6fkJJF1k75BKOaOhfM-WTQ", "ambulance.jpg")
-encoded_image8 = base64.b64encode(open(img7[0], 'rb').read())
+img8 = urllib.request.urlretrieve("https://img.freepik.com/free-vector/emergency-car-with-doctor-wear-hazmat-suit-carrying-patient-hospital-concept-cartoon-illustration_201904-432.jpg?size=626&ext=jpg", "ambulance1.jpg")
+encoded_image8 = base64.b64encode(open(img8[0], 'rb').read())
 
 
 amb = pd.read_csv("https://raw.githubusercontent.com/Nibs007/OxyCare/main/RefinedLead_Ambulances.csv")
@@ -135,7 +135,7 @@ body2 = html.Div([
         dbc.Row([
             dbc.Col([dbc.Row([dbc.Col(html.Div([
     html.Img(src='data:image/jpg;base64,{}'.format(encoded_image7.decode()), 
-             style={'height': '300px','width':'400px',"margin-left": "2px","margin-right":'5-px'})])), 
+             style={'height': '380px','width':'450px',"margin-left": "2px","margin-right":'5-px'})])), 
             dbc.Col(dcc.Dropdown(id='am',
             options=[{'label': i, 'value': i} for i in lamb], style={'height': '60px','font-size':25,"margin-bottom":'0.1px'},
             multi=False,
@@ -344,7 +344,7 @@ def update_figure2(area,dist):
                 dff = amb[(amb['Area']==area)&(amb['District']==dist)]
                
        
-            df1 = dff[['Service Provider','Area','Contact Number']]
+            df1 = dff[['Service Provider','District','Contact Number']]
          
             data = df1.to_dict('rows')
             columns =  [{"name": i, "id": i,} for i in (df1.columns)]
@@ -359,8 +359,6 @@ def update_figure2(area,dist):
        
                 })
    
-
-               
 
 if __name__ == '__main__':
     app.server.run(debug=True, threaded=True)
